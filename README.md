@@ -20,4 +20,6 @@ Focus. Rest. Purr. Repeat.
 
 ## 🐾 Project Goal
 
-My goal with **Purrdoro** is to build a pomodoro timer that felt a bit more personal and cute than other solutions.
+My goal with *Purrdoro* is to build a pomodoro timer that feels a bit more cute than other implementations.<br>
+Prior to starting work on this project, I had limited programming knowlegde and mainly kept to simple CLI tools.
+
