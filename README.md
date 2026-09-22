@@ -50,4 +50,9 @@ dotnet run --project src/Purrdoro
 - `src/Purrdoro.Core`: timer logic, settings and view models
 - `tests/Purrdoro.Core.Tests`: tests for the core logic
 
-Made with ❤️ by 1uckyday
+## Screenshots
+
+<p align="center">
+  <img src=".docs/screenshot1.png" alt="Purrdoro ready to start a focus session" width="300">
+  <img src=".docs/screenshot2.png" alt="Purrdoro paused during a short break" width="300">
+</p>
