@@ -1,0 +1,15 @@
+<Project>
+  <!-- Settings shared by every project in the repository. -->
+  <PropertyGroup>
+    <LangVersion>latest</LangVersion>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Deterministic>true</Deterministic>
+
+    <Product>Purrdoro</Product>
+    <Company>1uckyday</Company>
+    <Authors>1uckyday</Authors>
+    <Copyright>Copyright © 1uckyday</Copyright>
+    <Version>1.0.0</Version>
+  </PropertyGroup>
+</Project>

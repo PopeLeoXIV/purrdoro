@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Used only when building an MSIX package (WindowsPackageType=MSIX).
+  The default unpackaged build (dotnet run) ignores this file.
+-->
+<Package
+  xmlns="http://schemas.microsoft.com/appx/manifest/foundation/windows10"
+  xmlns:mp="http://schemas.microsoft.com/appx/2014/phone/manifest"
+  xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10"
+  xmlns:rescap="http://schemas.microsoft.com/appx/manifest/foundation/windows10/restrictedcapabilities"
+  xmlns:com="http://schemas.microsoft.com/appx/manifest/com/windows10"
+  xmlns:desktop="http://schemas.microsoft.com/appx/manifest/desktop/windows10"
+  IgnorableNamespaces="uap rescap com desktop mp">
+
+  <Identity
+    Name="1uckyday.Purrdoro"
+    Publisher="CN=1uckyday"
+    Version="1.0.0.0" />
+
+  <mp:PhoneIdentity PhoneProductId="6f3c2a4e-7b1d-4c55-9a0e-5d2b8e1f4a71" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
+
+  <Properties>
+    <DisplayName>Purrdoro</DisplayName>
+    <PublisherDisplayName>1uckyday</PublisherDisplayName>
+    <Logo>Assets\StoreLogo.png</Logo>
+  </Properties>
+
+  <Dependencies>
+    <TargetDeviceFamily Name="Windows.Universal" MinVersion="10.0.19041.0" MaxVersionTested="10.0.26100.0" />
+    <TargetDeviceFamily Name="Windows.Desktop" MinVersion="10.0.19041.0" MaxVersionTested="10.0.26100.0" />
+  </Dependencies>
+
+  <Resources>
+    <Resource Language="x-generate"/>
+  </Resources>
+
+  <Applications>
+    <Application Id="App"
+      Executable="$targetnametoken$.exe"
+      EntryPoint="$targetentrypoint$">
+      <uap:VisualElements
+        DisplayName="Purrdoro"
+        Description="A cozy little Pomodoro timer for focused work and well-earned breaks."
+        BackgroundColor="transparent"
+        Square150x150Logo="Assets\Square150x150Logo.png"
+        Square44x44Logo="Assets\Square44x44Logo.png">
+        <uap:DefaultTile Wide310x150Logo="Assets\Wide310x150Logo.png" />
+        <uap:SplashScreen Image="Assets\SplashScreen.png" />
+      </uap:VisualElements>
+
+      <Extensions>
+        <!-- Lets Windows route clicks on Purrdoro's notifications back to the app. -->
+        <desktop:Extension Category="windows.toastNotificationActivation">
+          <desktop:ToastNotificationActivation ToastActivatorCLSID="9C1E6B53-2D4F-4F7A-8B3E-6A0D5C7E2F14" />
+        </desktop:Extension>
+        <com:Extension Category="windows.comServer">
+          <com:ComServer>
+            <com:ExeServer Executable="Purrdoro.exe" Arguments="----AppNotificationActivated:" DisplayName="Purrdoro notifications">
+              <com:Class Id="9C1E6B53-2D4F-4F7A-8B3E-6A0D5C7E2F14" DisplayName="Purrdoro notifications" />
+            </com:ExeServer>
+          </com:ComServer>
+        </com:Extension>
+      </Extensions>
+    </Application>
+  </Applications>
+
+  <Capabilities>
+    <rescap:Capability Name="runFullTrust" />
+  </Capabilities>
+</Package>

@@ -1,0 +1,306 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Page
+    x:Class="Purrdoro.Views.SettingsPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="using:Purrdoro.Controls"
+    Background="Transparent"
+    NavigationCacheMode="Required">
+
+    <Page.KeyboardAccelerators>
+        <KeyboardAccelerator Key="Escape" Invoked="OnBackAcceleratorInvoked" />
+        <KeyboardAccelerator
+            Key="Left"
+            Invoked="OnBackAcceleratorInvoked"
+            Modifiers="Menu" />
+    </Page.KeyboardAccelerators>
+
+    <ScrollViewer
+        HorizontalScrollMode="Disabled"
+        HorizontalScrollBarVisibility="Disabled"
+        VerticalScrollBarVisibility="Auto">
+        <StackPanel
+            MaxWidth="520"
+            Padding="20,0,20,24">
+
+            <TextBlock
+                Margin="4,4,0,0"
+                AutomationProperties.HeadingLevel="Level1"
+                Foreground="{ThemeResource PurrTextPrimaryBrush}"
+                Style="{StaticResource SubtitleTextBlockStyle}"
+                Text="Settings" />
+
+            <!-- ============================ Timer ============================ -->
+            <TextBlock
+                AutomationProperties.HeadingLevel="Level2"
+                Style="{StaticResource PurrSectionHeaderStyle}"
+                Text="Timer" />
+            <Border Style="{StaticResource PurrSettingsCardStyle}">
+                <StackPanel>
+                    <Grid Style="{StaticResource PurrSettingRowStyle}">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+                        <TextBlock
+                            VerticalAlignment="Center"
+                            Style="{StaticResource PurrSettingLabelStyle}"
+                            Text="Focus (minutes)" />
+                        <NumberBox
+                            x:Name="FocusBox"
+                            Grid.Column="1"
+                            Width="124"
+                            VerticalAlignment="Center"
+                            AutomationProperties.Name="Focus duration in minutes"
+                            LargeChange="5"
+                            Maximum="{x:Bind ViewModel.FocusMaximum}"
+                            Minimum="{x:Bind ViewModel.FocusMinimum}"
+                            SmallChange="1"
+                            SpinButtonPlacementMode="Compact"
+                            ValidationMode="InvalidInputOverwritten"
+                            Value="{x:Bind ViewModel.FocusMinutes, Mode=TwoWay}" />
+                    </Grid>
+                    <Rectangle Style="{StaticResource PurrDividerStyle}" />
+
+                    <Grid Style="{StaticResource PurrSettingRowStyle}">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+                        <TextBlock
+                            VerticalAlignment="Center"
+                            Style="{StaticResource PurrSettingLabelStyle}"
+                            Text="Short break (minutes)" />
+                        <NumberBox
+                            x:Name="ShortBreakBox"
+                            Grid.Column="1"
+                            Width="124"
+                            VerticalAlignment="Center"
+                            AutomationProperties.Name="Short break duration in minutes"
+                            LargeChange="5"
+                            Maximum="{x:Bind ViewModel.ShortBreakMaximum}"
+                            Minimum="{x:Bind ViewModel.ShortBreakMinimum}"
+                            SmallChange="1"
+                            SpinButtonPlacementMode="Compact"
+                            ValidationMode="InvalidInputOverwritten"
+                            Value="{x:Bind ViewModel.ShortBreakMinutes, Mode=TwoWay}" />
+                    </Grid>
+                    <Rectangle Style="{StaticResource PurrDividerStyle}" />
+
+                    <Grid Style="{StaticResource PurrSettingRowStyle}">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+                        <TextBlock
+                            VerticalAlignment="Center"
+                            Style="{StaticResource PurrSettingLabelStyle}"
+                            Text="Long break (minutes)" />
+                        <NumberBox
+                            x:Name="LongBreakBox"
+                            Grid.Column="1"
+                            Width="124"
+                            VerticalAlignment="Center"
+                            AutomationProperties.Name="Long break duration in minutes"
+                            LargeChange="5"
+                            Maximum="{x:Bind ViewModel.LongBreakMaximum}"
+                            Minimum="{x:Bind ViewModel.LongBreakMinimum}"
+                            SmallChange="1"
+                            SpinButtonPlacementMode="Compact"
+                            ValidationMode="InvalidInputOverwritten"
+                            Value="{x:Bind ViewModel.LongBreakMinutes, Mode=TwoWay}" />
+                    </Grid>
+                    <Rectangle Style="{StaticResource PurrDividerStyle}" />
+
+                    <Grid Style="{StaticResource PurrSettingRowStyle}">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+                        <StackPanel VerticalAlignment="Center" Spacing="2">
+                            <TextBlock Style="{StaticResource PurrSettingLabelStyle}" Text="Long break after" />
+                            <TextBlock Style="{StaticResource PurrCaptionTextStyle}" Text="Completed focus sessions" />
+                        </StackPanel>
+                        <NumberBox
+                            x:Name="IntervalBox"
+                            Grid.Column="1"
+                            Width="124"
+                            VerticalAlignment="Center"
+                            AutomationProperties.Name="Focus sessions before a long break"
+                            LargeChange="2"
+                            Maximum="{x:Bind ViewModel.SessionsMaximum}"
+                            Minimum="{x:Bind ViewModel.SessionsMinimum}"
+                            SmallChange="1"
+                            SpinButtonPlacementMode="Compact"
+                            ValidationMode="InvalidInputOverwritten"
+                            Value="{x:Bind ViewModel.SessionsBeforeLongBreak, Mode=TwoWay}" />
+                    </Grid>
+                </StackPanel>
+            </Border>
+            <TextBlock
+                Margin="4,8,4,0"
+                Style="{StaticResource PurrCaptionTextStyle}"
+                Text="{x:Bind ViewModel.DurationChangeNote}" />
+
+            <!-- ============================ Automation ============================ -->
+            <TextBlock
+                AutomationProperties.HeadingLevel="Level2"
+                Style="{StaticResource PurrSectionHeaderStyle}"
+                Text="Automation" />
+            <Border Style="{StaticResource PurrSettingsCardStyle}">
+                <StackPanel>
+                    <Grid Style="{StaticResource PurrSettingRowStyle}">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+                        <StackPanel VerticalAlignment="Center" Spacing="2">
+                            <TextBlock Style="{StaticResource PurrSettingLabelStyle}" Text="Auto-start breaks" />
+                            <TextBlock Style="{StaticResource PurrCaptionTextStyle}" Text="Begin the break as soon as focus ends" />
+                        </StackPanel>
+                        <ToggleSwitch
+                            Grid.Column="1"
+                            MinWidth="0"
+                            VerticalAlignment="Center"
+                            AutomationProperties.Name="Auto-start breaks"
+                            IsOn="{x:Bind ViewModel.AutoStartBreaks, Mode=TwoWay}" />
+                    </Grid>
+                    <Rectangle Style="{StaticResource PurrDividerStyle}" />
+
+                    <Grid Style="{StaticResource PurrSettingRowStyle}">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+                        <StackPanel VerticalAlignment="Center" Spacing="2">
+                            <TextBlock Style="{StaticResource PurrSettingLabelStyle}" Text="Auto-start focus sessions" />
+                            <TextBlock Style="{StaticResource PurrCaptionTextStyle}" Text="Begin focusing as soon as a break ends" />
+                        </StackPanel>
+                        <ToggleSwitch
+                            Grid.Column="1"
+                            MinWidth="0"
+                            VerticalAlignment="Center"
+                            AutomationProperties.Name="Auto-start focus sessions"
+                            IsOn="{x:Bind ViewModel.AutoStartFocus, Mode=TwoWay}" />
+                    </Grid>
+                </StackPanel>
+            </Border>
+
+            <!-- ============================ Alerts ============================ -->
+            <TextBlock
+                AutomationProperties.HeadingLevel="Level2"
+                Style="{StaticResource PurrSectionHeaderStyle}"
+                Text="Alerts" />
+            <Border Style="{StaticResource PurrSettingsCardStyle}">
+                <StackPanel>
+                    <Grid Style="{StaticResource PurrSettingRowStyle}">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+                        <StackPanel VerticalAlignment="Center" Spacing="2">
+                            <TextBlock Style="{StaticResource PurrSettingLabelStyle}" Text="Desktop notifications" />
+                            <TextBlock Style="{StaticResource PurrCaptionTextStyle}" Text="Show a Windows notification when a session ends" />
+                        </StackPanel>
+                        <ToggleSwitch
+                            Grid.Column="1"
+                            MinWidth="0"
+                            VerticalAlignment="Center"
+                            AutomationProperties.Name="Desktop notifications"
+                            IsOn="{x:Bind ViewModel.NotificationsEnabled, Mode=TwoWay}" />
+                    </Grid>
+                    <Rectangle Style="{StaticResource PurrDividerStyle}" />
+
+                    <Grid Style="{StaticResource PurrSettingRowStyle}">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+                        <StackPanel VerticalAlignment="Center" Spacing="2">
+                            <TextBlock Style="{StaticResource PurrSettingLabelStyle}" Text="Completion sound" />
+                            <TextBlock Style="{StaticResource PurrCaptionTextStyle}" Text="Play a soft chime when a session ends" />
+                        </StackPanel>
+                        <ToggleSwitch
+                            Grid.Column="1"
+                            MinWidth="0"
+                            VerticalAlignment="Center"
+                            AutomationProperties.Name="Completion sound"
+                            IsOn="{x:Bind ViewModel.SoundEnabled, Mode=TwoWay}" />
+                    </Grid>
+                </StackPanel>
+            </Border>
+
+            <!-- ============================ Appearance ============================ -->
+            <TextBlock
+                AutomationProperties.HeadingLevel="Level2"
+                Style="{StaticResource PurrSectionHeaderStyle}"
+                Text="Appearance" />
+            <Border Style="{StaticResource PurrSettingsCardStyle}">
+                <Grid Style="{StaticResource PurrSettingRowStyle}">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+                    <TextBlock
+                        VerticalAlignment="Center"
+                        Style="{StaticResource PurrSettingLabelStyle}"
+                        Text="Theme" />
+                    <ComboBox
+                        Grid.Column="1"
+                        MinWidth="170"
+                        VerticalAlignment="Center"
+                        AutomationProperties.Name="Theme"
+                        ItemsSource="{x:Bind ViewModel.ThemeOptions}"
+                        SelectedIndex="{x:Bind ViewModel.ThemeIndex, Mode=TwoWay}" />
+                </Grid>
+            </Border>
+
+            <!-- ============================ About ============================ -->
+            <TextBlock
+                AutomationProperties.HeadingLevel="Level2"
+                Style="{StaticResource PurrSectionHeaderStyle}"
+                Text="About" />
+            <Border Padding="16" Style="{StaticResource PurrSettingsCardStyle}">
+                <Grid ColumnSpacing="16">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+
+                    <controls:CatMascot
+                        Width="60"
+                        Height="53"
+                        VerticalAlignment="Top"
+                        Mood="{x:Bind ViewModel.AboutMood}" />
+
+                    <StackPanel Grid.Column="1" Spacing="4">
+                        <TextBlock
+                            Foreground="{ThemeResource PurrTextPrimaryBrush}"
+                            Style="{StaticResource BodyStrongTextBlockStyle}"
+                            Text="{x:Bind ViewModel.AppName}" />
+                        <TextBlock Style="{StaticResource PurrSecondaryTextStyle}" Text="{x:Bind ViewModel.AppDescription}" />
+                        <TextBlock
+                            Margin="0,6,0,0"
+                            Foreground="{ThemeResource PurrTextPrimaryBrush}"
+                            Style="{StaticResource BodyTextBlockStyle}"
+                            Text="{x:Bind ViewModel.Credit}" />
+                        <TextBlock Style="{StaticResource PurrCaptionTextStyle}" Text="{x:Bind ViewModel.VersionText}" />
+                        <Button
+                            Margin="0,10,0,0"
+                            AutomationProperties.Name="Open Purrdoro's author on GitHub"
+                            Command="{x:Bind ViewModel.OpenGitHubCommand}"
+                            ToolTipService.ToolTip="https://github.com/PopeLeoXIV">
+                            <StackPanel Orientation="Horizontal" Spacing="8">
+                                <TextBlock VerticalAlignment="Center" Text="GitHub" />
+                                <FontIcon
+                                    VerticalAlignment="Center"
+                                    FontSize="12"
+                                    Glyph="&#xE8A7;" />
+                            </StackPanel>
+                        </Button>
+                    </StackPanel>
+                </Grid>
+            </Border>
+        </StackPanel>
+    </ScrollViewer>
+</Page>

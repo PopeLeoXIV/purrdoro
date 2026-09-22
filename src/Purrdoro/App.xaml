@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Application
+    x:Class="Purrdoro.App"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <XamlControlsResources xmlns="using:Microsoft.UI.Xaml.Controls" />
+                <ResourceDictionary Source="ms-appx:///Themes/Colors.xaml" />
+                <ResourceDictionary Source="ms-appx:///Themes/Styles.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+
+            <!--
+              Warm terracotta accent for any WinUI control that reads the system accent
+              directly. Light theme uses Dark1 and dark theme uses Light2.
+            -->
+            <Color x:Key="SystemAccentColor">#C86F4A</Color>
+            <Color x:Key="SystemAccentColorLight1">#D8835C</Color>
+            <Color x:Key="SystemAccentColorLight2">#E89A74</Color>
+            <Color x:Key="SystemAccentColorLight3">#F2B99F</Color>
+            <Color x:Key="SystemAccentColorDark1">#B45C38</Color>
+            <Color x:Key="SystemAccentColorDark2">#96492B</Color>
+            <Color x:Key="SystemAccentColorDark3">#763820</Color>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

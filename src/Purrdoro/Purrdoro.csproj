@@ -1,0 +1,79 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net10.0-windows10.0.26100.0</TargetFramework>
+    <TargetPlatformMinVersion>10.0.19041.0</TargetPlatformMinVersion>
+    <SupportedOSPlatformVersion>10.0.19041.0</SupportedOSPlatformVersion>
+    <RootNamespace>Purrdoro</RootNamespace>
+    <AssemblyName>Purrdoro</AssemblyName>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+    <ApplicationIcon>Assets\AppIcon.ico</ApplicationIcon>
+
+    <!--
+      Build for the architecture of the machine running the SDK unless one is given
+      explicitly (-r win-arm64, -p:RuntimeIdentifier=...). This is what lets a plain
+      `dotnet build` / `dotnet run` work without a -p:Platform argument.
+    -->
+    <RuntimeIdentifier Condition="'$(RuntimeIdentifier)' == ''">win-$([System.Runtime.InteropServices.RuntimeInformation]::ProcessArchitecture.ToString().ToLowerInvariant())</RuntimeIdentifier>
+
+    <UseWinUI>true</UseWinUI>
+    <WinUISDKReferences>false</WinUISDKReferences>
+
+    <!--
+      Unpackaged by default so `dotnet run` launches the exe directly. The app
+      bootstraps the Windows App Runtime (framework-dependent) at startup.
+      MSIX packaging is still available: see README "Windows release".
+    -->
+    <WindowsPackageType>None</WindowsPackageType>
+    <WindowsAppSDKSelfContained Condition="'$(WindowsAppSDKSelfContained)' == ''">false</WindowsAppSDKSelfContained>
+    <EnableMsixTooling>true</EnableMsixTooling>
+
+    <!-- Publish settings (used by `dotnet publish -c Release`). -->
+    <PublishReadyToRun Condition="'$(Configuration)' != 'Debug'">true</PublishReadyToRun>
+    <!-- WinUI + reflection-based XAML binding are not trim-safe; keep full assemblies. -->
+    <PublishTrimmed>false</PublishTrimmed>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Manifest Include="$(ApplicationManifest)" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- Copied next to the exe for unpackaged runs and included in the MSIX payload. -->
+    <Content Include="Assets\AppIcon.ico" CopyToOutputDirectory="PreserveNewest" />
+    <Content Include="Assets\AppIcon.png" CopyToOutputDirectory="PreserveNewest" />
+    <Content Include="Assets\LockScreenLogo.scale-200.png" CopyToOutputDirectory="PreserveNewest" />
+    <Content Include="Assets\SplashScreen.scale-200.png" CopyToOutputDirectory="PreserveNewest" />
+    <Content Include="Assets\Square150x150Logo.scale-200.png" CopyToOutputDirectory="PreserveNewest" />
+    <Content Include="Assets\Square44x44Logo.scale-200.png" CopyToOutputDirectory="PreserveNewest" />
+    <Content Include="Assets\Square44x44Logo.targetsize-24_altform-unplated.png" CopyToOutputDirectory="PreserveNewest" />
+    <Content Include="Assets\StoreLogo.png" CopyToOutputDirectory="PreserveNewest" />
+    <Content Include="Assets\Wide310x150Logo.scale-200.png" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <!--
+      Microsoft.WindowsAppSDK: WinUI 3, AppWindow, app notifications, bootstrapper.
+      Microsoft.Windows.SDK.BuildTools: Windows SDK build tools (MRT/PRI, MSIX) required by WinUI projects.
+      No other packages are used.
+    -->
+    <PackageReference Include="Microsoft.WindowsAppSDK" Version="2.5.1" />
+    <PackageReference Include="Microsoft.Windows.SDK.BuildTools" Version="10.0.26100.9169" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Purrdoro.Core\Purrdoro.Core.csproj" />
+  </ItemGroup>
+
+  <!--
+    Lets Visual Studio's single-project MSIX tooling light up before the first restore.
+  -->
+  <ItemGroup Condition="'$(DisableMsixProjectCapabilityAddedByProject)' != 'true' and '$(EnableMsixTooling)' == 'true'">
+    <ProjectCapability Include="Msix" />
+  </ItemGroup>
+  <PropertyGroup Condition="'$(DisableHasPackageAndPublishMenuAddedByProject)' != 'true' and '$(EnableMsixTooling)' == 'true'">
+    <HasPackageAndPublishMenu>true</HasPackageAndPublishMenu>
+  </PropertyGroup>
+
+</Project>

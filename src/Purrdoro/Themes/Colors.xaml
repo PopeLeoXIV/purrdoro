@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Purrdoro's palette. Every colour lives here, once per theme, and the rest of
+  the app refers to these brushes with {ThemeResource}, so switching between
+  System / Light / Dark is instant and the palette is easy to tune.
+-->
+<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <ResourceDictionary.ThemeDictionaries>
+
+        <!-- ================= Light: cream, warm brown ink, terracotta ================= -->
+        <ResourceDictionary x:Key="Light">
+            <!-- Laid over Mica so the window keeps a soft cream tone. -->
+            <SolidColorBrush x:Key="PurrWindowTintBrush" Color="#F7F1E9" Opacity="0.86" />
+            <SolidColorBrush x:Key="PurrCardBrush" Color="#FFFCF7" />
+            <SolidColorBrush x:Key="PurrCardBorderBrush" Color="#ECE1D4" />
+            <SolidColorBrush x:Key="PurrDividerBrush" Color="#F0E7DC" />
+            <SolidColorBrush x:Key="PurrSubtleFillBrush" Color="#F4EBE1" />
+
+            <SolidColorBrush x:Key="PurrTextPrimaryBrush" Color="#3B302A" />
+            <SolidColorBrush x:Key="PurrTextSecondaryBrush" Color="#6F6055" />
+
+            <SolidColorBrush x:Key="PurrAccentBrush" Color="#B45C38" />
+            <SolidColorBrush x:Key="PurrRingTrackBrush" Color="#F1E6DA" />
+            <SolidColorBrush x:Key="PurrDotEmptyBrush" Color="#E3D5C6" />
+
+            <SolidColorBrush x:Key="PurrCatInkBrush" Color="#3B302A" />
+            <SolidColorBrush x:Key="PurrCatFaceBrush" Color="#FFFCF7" />
+            <SolidColorBrush x:Key="PurrCatBlushBrush" Color="#F0AE92" Opacity="0.55" />
+            <SolidColorBrush x:Key="PurrCatMouthBrush" Color="#E9A387" />
+            <SolidColorBrush x:Key="PurrSparkleBrush" Color="#E2A548" />
+            <!-- Lightweight styling so WinUI controls use the warm accent regardless of the Windows accent colour. -->
+            <SolidColorBrush x:Key="AccentButtonBackground" Color="#B45C38" />
+            <SolidColorBrush x:Key="AccentButtonBackgroundPointerOver" Color="#A65331" />
+            <SolidColorBrush x:Key="AccentButtonBackgroundPressed" Color="#96492B" />
+            <SolidColorBrush x:Key="AccentButtonForeground" Color="#FFFFFF" />
+            <SolidColorBrush x:Key="AccentButtonForegroundPointerOver" Color="#FFFFFF" />
+            <SolidColorBrush x:Key="AccentButtonForegroundPressed" Color="#F7E4DA" />
+            <SolidColorBrush x:Key="AccentButtonBorderBrush" Color="#B45C38" />
+            <SolidColorBrush x:Key="AccentButtonBorderBrushPointerOver" Color="#A65331" />
+            <SolidColorBrush x:Key="AccentButtonBorderBrushPressed" Color="#96492B" />
+            <SolidColorBrush x:Key="ToggleSwitchFillOn" Color="#B45C38" />
+            <SolidColorBrush x:Key="ToggleSwitchFillOnPointerOver" Color="#A65331" />
+            <SolidColorBrush x:Key="ToggleSwitchFillOnPressed" Color="#96492B" />
+            <SolidColorBrush x:Key="ToggleSwitchStrokeOn" Color="#B45C38" />
+            <SolidColorBrush x:Key="ToggleSwitchStrokeOnPointerOver" Color="#A65331" />
+            <SolidColorBrush x:Key="ToggleSwitchStrokeOnPressed" Color="#96492B" />
+        </ResourceDictionary>
+
+        <!-- ================= Dark: warm charcoal, off-white ink, peach ================= -->
+        <ResourceDictionary x:Key="Dark">
+            <SolidColorBrush x:Key="PurrWindowTintBrush" Color="#1C1916" Opacity="0.88" />
+            <SolidColorBrush x:Key="PurrCardBrush" Color="#28231F" />
+            <SolidColorBrush x:Key="PurrCardBorderBrush" Color="#3A322C" />
+            <SolidColorBrush x:Key="PurrDividerBrush" Color="#342D28" />
+            <SolidColorBrush x:Key="PurrSubtleFillBrush" Color="#322B26" />
+
+            <SolidColorBrush x:Key="PurrTextPrimaryBrush" Color="#F3ECE4" />
+            <SolidColorBrush x:Key="PurrTextSecondaryBrush" Color="#BCAFA4" />
+
+            <SolidColorBrush x:Key="PurrAccentBrush" Color="#E89A74" />
+            <SolidColorBrush x:Key="PurrRingTrackBrush" Color="#382F29" />
+            <SolidColorBrush x:Key="PurrDotEmptyBrush" Color="#4A3F37" />
+
+            <SolidColorBrush x:Key="PurrCatInkBrush" Color="#F3ECE4" />
+            <SolidColorBrush x:Key="PurrCatFaceBrush" Color="#28231F" />
+            <SolidColorBrush x:Key="PurrCatBlushBrush" Color="#E89A74" Opacity="0.35" />
+            <SolidColorBrush x:Key="PurrCatMouthBrush" Color="#C9795A" />
+            <SolidColorBrush x:Key="PurrSparkleBrush" Color="#F0C36D" />
+            <SolidColorBrush x:Key="AccentButtonBackground" Color="#E89A74" />
+            <SolidColorBrush x:Key="AccentButtonBackgroundPointerOver" Color="#EDA885" />
+            <SolidColorBrush x:Key="AccentButtonBackgroundPressed" Color="#D98A64" />
+            <SolidColorBrush x:Key="AccentButtonForeground" Color="#2A1A12" />
+            <SolidColorBrush x:Key="AccentButtonForegroundPointerOver" Color="#2A1A12" />
+            <SolidColorBrush x:Key="AccentButtonForegroundPressed" Color="#4A3024" />
+            <SolidColorBrush x:Key="AccentButtonBorderBrush" Color="#E89A74" />
+            <SolidColorBrush x:Key="AccentButtonBorderBrushPointerOver" Color="#EDA885" />
+            <SolidColorBrush x:Key="AccentButtonBorderBrushPressed" Color="#D98A64" />
+            <SolidColorBrush x:Key="ToggleSwitchFillOn" Color="#E89A74" />
+            <SolidColorBrush x:Key="ToggleSwitchFillOnPointerOver" Color="#EDA885" />
+            <SolidColorBrush x:Key="ToggleSwitchFillOnPressed" Color="#D98A64" />
+            <SolidColorBrush x:Key="ToggleSwitchStrokeOn" Color="#E89A74" />
+            <SolidColorBrush x:Key="ToggleSwitchStrokeOnPointerOver" Color="#EDA885" />
+            <SolidColorBrush x:Key="ToggleSwitchStrokeOnPressed" Color="#D98A64" />
+        </ResourceDictionary>
+
+        <!-- ================= High contrast: defer entirely to system colours ================= -->
+        <ResourceDictionary x:Key="HighContrast">
+            <SolidColorBrush x:Key="PurrWindowTintBrush" Color="{ThemeResource SystemColorWindowColor}" />
+            <SolidColorBrush x:Key="PurrCardBrush" Color="{ThemeResource SystemColorWindowColor}" />
+            <SolidColorBrush x:Key="PurrCardBorderBrush" Color="{ThemeResource SystemColorWindowTextColor}" />
+            <SolidColorBrush x:Key="PurrDividerBrush" Color="{ThemeResource SystemColorWindowTextColor}" />
+            <SolidColorBrush x:Key="PurrSubtleFillBrush" Color="{ThemeResource SystemColorButtonFaceColor}" />
+
+            <SolidColorBrush x:Key="PurrTextPrimaryBrush" Color="{ThemeResource SystemColorWindowTextColor}" />
+            <SolidColorBrush x:Key="PurrTextSecondaryBrush" Color="{ThemeResource SystemColorWindowTextColor}" />
+
+            <SolidColorBrush x:Key="PurrAccentBrush" Color="{ThemeResource SystemColorHighlightColor}" />
+            <SolidColorBrush x:Key="PurrRingTrackBrush" Color="{ThemeResource SystemColorGrayTextColor}" />
+            <SolidColorBrush x:Key="PurrDotEmptyBrush" Color="{ThemeResource SystemColorGrayTextColor}" />
+
+            <SolidColorBrush x:Key="PurrCatInkBrush" Color="{ThemeResource SystemColorWindowTextColor}" />
+            <SolidColorBrush x:Key="PurrCatFaceBrush" Color="{ThemeResource SystemColorWindowColor}" />
+            <SolidColorBrush x:Key="PurrCatBlushBrush" Color="Transparent" />
+            <SolidColorBrush x:Key="PurrCatMouthBrush" Color="{ThemeResource SystemColorWindowColor}" />
+            <SolidColorBrush x:Key="PurrSparkleBrush" Color="{ThemeResource SystemColorHighlightColor}" />
+        </ResourceDictionary>
+
+    </ResourceDictionary.ThemeDictionaries>
+</ResourceDictionary>

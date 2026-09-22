@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window
+    x:Class="Purrdoro.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Title="Purrdoro">
+
+    <Window.SystemBackdrop>
+        <MicaBackdrop />
+    </Window.SystemBackdrop>
+
+    <!-- RootGrid carries the chosen theme (RequestedTheme) and a warm tint over Mica. -->
+    <Grid x:Name="RootGrid" Background="{ThemeResource PurrWindowTintBrush}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <TitleBar
+            x:Name="AppTitleBar"
+            Title="Purrdoro"
+            BackRequested="OnTitleBarBackRequested"
+            IsBackButtonVisible="False">
+            <TitleBar.IconSource>
+                <ImageIconSource ImageSource="ms-appx:///Assets/AppIcon.png" />
+            </TitleBar.IconSource>
+        </TitleBar>
+
+        <Frame
+            x:Name="RootFrame"
+            Grid.Row="1"
+            Navigated="OnFrameNavigated" />
+    </Grid>
+</Window>

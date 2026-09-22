@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- A thin circular progress ring: a faint track plus a rounded arc that grows clockwise from 12 o'clock. -->
+<UserControl
+    x:Class="Purrdoro.Controls.ProgressArc"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    IsTabStop="False">
+
+    <Grid x:Name="RootGrid" SizeChanged="OnRootSizeChanged">
+        <Ellipse x:Name="Track" />
+        <Path
+            x:Name="Arc"
+            StrokeStartLineCap="Round"
+            StrokeEndLineCap="Round" />
+    </Grid>
+</UserControl>

@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Page
+    x:Class="Purrdoro.Views.TimerPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="using:Purrdoro.Controls"
+    xmlns:vm="using:Purrdoro.Core.ViewModels"
+    Background="Transparent"
+    NavigationCacheMode="Required">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <ScrollViewer
+            HorizontalScrollMode="Disabled"
+            HorizontalScrollBarVisibility="Disabled"
+            VerticalScrollBarVisibility="Auto">
+            <StackPanel
+                MaxWidth="{StaticResource PurrContentMaxWidth}"
+                Padding="20,4,20,8"
+                Spacing="16">
+
+                <!-- ===================== Timer card ===================== -->
+                <Border Padding="20,16,20,22" Style="{StaticResource PurrCardStyle}">
+                    <StackPanel>
+
+                        <!-- The cat sits on top of the ring with its paws resting on the edge. -->
+                        <Grid HorizontalAlignment="Center">
+                            <Viewbox
+                                MaxWidth="248"
+                                Margin="0,80,0,0"
+                                Stretch="Uniform"
+                                StretchDirection="DownOnly">
+                                <Grid Width="248" Height="248">
+                                    <controls:ProgressArc
+                                        ArcBrush="{ThemeResource PurrAccentBrush}"
+                                        Thickness="6"
+                                        TrackBrush="{ThemeResource PurrRingTrackBrush}"
+                                        Value="{x:Bind ViewModel.Progress, Mode=OneWay}" />
+
+                                    <StackPanel
+                                        Padding="28,0"
+                                        VerticalAlignment="Center"
+                                        Spacing="10">
+                                        <TextBlock
+                                            AutomationProperties.HeadingLevel="Level1"
+                                            AutomationProperties.LiveSetting="Polite"
+                                            Style="{StaticResource PurrSessionLabelStyle}"
+                                            Text="{x:Bind ViewModel.SessionTitle, Mode=OneWay}" />
+                                        <TextBlock
+                                            AutomationProperties.Name="{x:Bind ViewModel.TimerAutomationName, Mode=OneWay}"
+                                            Style="{StaticResource PurrTimerTextStyle}"
+                                            Text="{x:Bind ViewModel.TimeText, Mode=OneWay}" />
+                                        <TextBlock
+                                            MaxWidth="176"
+                                            Style="{StaticResource PurrMessageStyle}"
+                                            Text="{x:Bind ViewModel.Message, Mode=OneWay}" />
+                                    </StackPanel>
+                                </Grid>
+                            </Viewbox>
+
+                            <controls:CatMascot
+                                Width="108"
+                                Height="95"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Top"
+                                Mood="{x:Bind ViewModel.CatMood, Mode=OneWay}" />
+                        </Grid>
+
+                        <!-- Controls: quiet Reset, prominent Start/Pause/Resume, quiet Skip -->
+                        <StackPanel
+                            Margin="0,20,0,0"
+                            HorizontalAlignment="Center"
+                            Orientation="Horizontal"
+                            Spacing="14">
+                            <Button
+                                AutomationProperties.Name="Reset session"
+                                Command="{x:Bind ViewModel.ResetCommand}"
+                                Style="{StaticResource PurrRoundIconButtonStyle}"
+                                ToolTipService.ToolTip="Reset this session">
+                                <Button.KeyboardAccelerators>
+                                    <KeyboardAccelerator Key="R" Modifiers="Control" />
+                                </Button.KeyboardAccelerators>
+                                <FontIcon FontSize="{StaticResource PurrIconSize}" Glyph="&#xE777;" />
+                            </Button>
+
+                            <Button
+                                x:Name="PrimaryButton"
+                                AutomationProperties.Name="{x:Bind ViewModel.PrimaryActionLabel, Mode=OneWay}"
+                                Command="{x:Bind ViewModel.PrimaryCommand}"
+                                Style="{StaticResource PurrPrimaryButtonStyle}"
+                                ToolTipService.ToolTip="{x:Bind ViewModel.PrimaryActionHelp, Mode=OneWay}">
+                                <Button.KeyboardAccelerators>
+                                    <KeyboardAccelerator Key="Space" Modifiers="Control" />
+                                </Button.KeyboardAccelerators>
+                                <StackPanel Orientation="Horizontal" Spacing="8">
+                                    <FontIcon
+                                        VerticalAlignment="Center"
+                                        FontSize="14"
+                                        Glyph="{x:Bind ViewModel.PrimaryActionGlyph, Mode=OneWay}" />
+                                    <TextBlock VerticalAlignment="Center" Text="{x:Bind ViewModel.PrimaryActionLabel, Mode=OneWay}" />
+                                </StackPanel>
+                            </Button>
+
+                            <Button
+                                AutomationProperties.Name="Skip to next session"
+                                Command="{x:Bind ViewModel.SkipCommand}"
+                                Style="{StaticResource PurrRoundIconButtonStyle}"
+                                ToolTipService.ToolTip="Skip to the next session">
+                                <Button.KeyboardAccelerators>
+                                    <KeyboardAccelerator Key="Right" Modifiers="Control" />
+                                </Button.KeyboardAccelerators>
+                                <FontIcon FontSize="{StaticResource PurrIconSize}" Glyph="&#xE893;" />
+                            </Button>
+                        </StackPanel>
+                    </StackPanel>
+                </Border>
+
+                <!-- ===================== Pomodoro progress ===================== -->
+                <StackPanel HorizontalAlignment="Center" Spacing="8">
+                    <ItemsControl
+                        HorizontalAlignment="Center"
+                        AutomationProperties.Name="{x:Bind ViewModel.CycleDescription, Mode=OneWay}"
+                        IsTabStop="False"
+                        ItemsSource="{x:Bind ViewModel.CycleDots}"
+                        ToolTipService.ToolTip="{x:Bind ViewModel.CycleDescription, Mode=OneWay}">
+                        <ItemsControl.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <StackPanel Orientation="Horizontal" Spacing="8" />
+                            </ItemsPanelTemplate>
+                        </ItemsControl.ItemsPanel>
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate x:DataType="vm:CycleDot">
+                                <Grid
+                                    Width="8"
+                                    Height="8"
+                                    AutomationProperties.AccessibilityView="Raw">
+                                    <Ellipse Fill="{ThemeResource PurrDotEmptyBrush}" />
+                                    <Ellipse Fill="{ThemeResource PurrAccentBrush}" Visibility="{x:Bind IsFilled}" />
+                                </Grid>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+
+                    <TextBlock
+                        HorizontalAlignment="Center"
+                        Style="{StaticResource PurrCaptionTextStyle}"
+                        Text="{x:Bind ViewModel.CompletedTodayText, Mode=OneWay}"
+                        TextAlignment="Center" />
+                </StackPanel>
+            </StackPanel>
+        </ScrollViewer>
+
+        <!-- ===================== Settings access ===================== -->
+        <Button
+            Grid.Row="1"
+            Margin="0,4,0,12"
+            HorizontalAlignment="Center"
+            AutomationProperties.Name="Settings"
+            Click="OnSettingsClick"
+            Style="{StaticResource PurrFooterButtonStyle}"
+            ToolTipService.ToolTip="Settings">
+            <StackPanel Orientation="Horizontal" Spacing="8">
+                <FontIcon
+                    VerticalAlignment="Center"
+                    FontSize="14"
+                    Glyph="&#xE713;" />
+                <TextBlock VerticalAlignment="Center" Text="Settings" />
+            </StackPanel>
+        </Button>
+    </Grid>
+</Page>

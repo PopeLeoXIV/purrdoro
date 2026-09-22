@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <!--
+    Platform-independent heart of Purrdoro: timer engine, Pomodoro cycle,
+    settings persistence and ViewModels. It has no Windows or NuGet
+    dependencies, so it builds and is tested on any OS with the .NET 10 SDK.
+  -->
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <RootNamespace>Purrdoro.Core</RootNamespace>
+    <GenerateDocumentationFile>false</GenerateDocumentationFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <InternalsVisibleTo Include="Purrdoro.Core.Tests" />
+  </ItemGroup>
+
+</Project>

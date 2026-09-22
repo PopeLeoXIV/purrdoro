@@ -1,0 +1,9 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/Purrdoro.Core/Purrdoro.Core.csproj" />
+    <Project Path="src/Purrdoro/Purrdoro.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/Purrdoro.Core.Tests/Purrdoro.Core.Tests.csproj" />
+  </Folder>
+</Solution>
