@@ -2,11 +2,12 @@
 
 # 🐱 Purrdoro
 
-### A cozy cat-themed Pomodoro timer for Windows
+### A cozy cat-themed pomodoro timer for Windows
 
 Focus. Rest. Purr. Repeat.
 
 </div>
+
 <div align="center">
 
 ![C#](https://img.shields.io/badge/C%23-12-purple)
@@ -16,3 +17,7 @@ Focus. Rest. Purr. Repeat.
 ![Architecture](https://img.shields.io/badge/architecture-MVVM-orange)
 
 </div>
+
+## 🐾 Project Goal
+
+My goal with **Purrdoro** is to build a pomodoro timer that felt a bit more personal and cute than other solutions.
